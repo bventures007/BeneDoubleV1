@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- utilities.qdoc -->
+  <title>Executing utilities | SAM-BA 3.8</title>
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="postheader" valign="center"> <a href="index.html">Home</a> &middot; </td></tr></table><li>Executing utilities</li>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#the-u-utils-option">The &quot;<i>-u, --utils</i>&quot; option</a></li>
+<li class="level2"><a href="#gen-image-utility">&quot;gen_image&quot; utility</a></li>
+<li class="level2"><a href="#parse-image-utility">&quot;parse_image&quot; utility</a></li>
+<li class="level2"><a href="#gen-pmecc-cfg-utility">&quot;gen_pmecc_cfg&quot; utility</a></li>
+<li class="level2"><a href="#parse-pmecc-cfg-utility">&quot;parse_pmecc_cfg&quot; utility</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Executing utilities</h1>
+<span class="subtitle"></span>
+<!-- $$$utilities.html-description -->
+<div class="descr"> <a name="details"></a>
+<a name="the-u-utils-option"></a>
+<h2 id="the-u-utils-option">The &quot;<i>-u, --utils</i>&quot; option</h2>
+<p>The &quot;<i>-u, --utils</i>&quot; option is used to execute utilities. This option cannot be used with any of the <a href="monitor.html#the-m-monitor-option">&quot;<i>-m, --monitor</i>&quot;</a>, <a href="applet.html#the-a-applet-option">&quot;<i>-a, --applet</i>&quot;</a>, <a href="port.html#the-p-port-option">&quot;<i>-p, --port</i>&quot;</a>, <a href="devices.html#the-d-device-option">&quot;<i>-d, --device</i>&quot;</a>, <a href="devices.html#the-b-board-option">&quot;<i>-b, --board</i>&quot;</a> or <a href="script.html#the-x-execute-option">&quot;<i>-x, --execute</i>&quot;</a> options but can still be used with the <a href="applet.html#the-t-tracelevel-option">&quot;<i>-t, --tracelevel</i>&quot;</a> option.</p>
+<p>The &quot;<i>-u, --utils</i>&quot; option must be followed by the name of the utility to execute and a colon separated list of parameters.</p>
+<pre class="cpp">$ sam<span class="operator">-</span>ba <span class="operator">-</span>u help
+Execute a tool among a list of utilities<span class="operator">.</span>
+Usage:
+  <span class="operator">-</span>u <span class="operator">&lt;</span>tool<span class="operator">&gt;</span>:<span class="operator">[</span>args:<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">]</span>
+       where: <span class="operator">&lt;</span>tool<span class="operator">&gt;</span>    <span class="operator">=</span>
+              gen_image       <span class="operator">=</span> Generate a bootable bootstrap image
+              parse_image     <span class="operator">=</span> Get bootable bootstrap image info
+              gen_pmecc_cfg   <span class="operator">=</span> Generate a PMECC config <span class="keyword">for</span> NAND Flash
+              parse_pmecc_cfg <span class="operator">=</span> Describe a PMECC config
+Note:
+  For a detailed description <span class="keyword">for</span> a tool execute:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u <span class="operator">&lt;</span>tool<span class="operator">&gt;</span>:help
+
+Example:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u gen_image:help</pre>
+<a name="gen-image-utility"></a>
+<h3 >&quot;gen_image&quot; utility</h3>
+<p>The &quot;<i>gen_image</i>&quot; utility generates a bootable &quot;bootstrap image&quot; from a plain boostrap binary file.</p>
+<pre class="cpp">$ sam<span class="operator">-</span>ba <span class="operator">-</span>u gen_image:help
+
+Generate a bootable bootstrap image from a plain bootstrap binary<span class="operator">.</span>
+Usage:
+  <span class="operator">-</span>u gen_image:<span class="operator">&lt;</span>device<span class="operator">&gt;</span>:<span class="operator">&lt;</span>input<span class="operator">-</span>filename<span class="operator">&gt;</span>:<span class="operator">[</span><span class="operator">&lt;</span>output<span class="operator">-</span>filename<span class="operator">&gt;</span><span class="operator">]</span>:<span class="operator">[</span><span class="operator">&lt;</span>major<span class="operator">-</span>version<span class="operator">&gt;</span><span class="operator">]</span>:<span class="operator">[</span><span class="operator">&lt;</span>minor<span class="operator">-</span>version<span class="operator">&gt;</span><span class="operator">]</span>
+       where: <span class="operator">&lt;</span>device<span class="operator">&gt;</span>            <span class="operator">=</span> target device
+              <span class="operator">&lt;</span>input<span class="operator">-</span>filename<span class="operator">&gt;</span>    <span class="operator">=</span> raw bootstrap binary filename
+              <span class="operator">&lt;</span>output<span class="operator">-</span>filename<span class="operator">&gt;</span>   <span class="operator">=</span> bootable bootstrap image filename (<span class="keyword">default</span>: <span class="string">&quot;boot_img.bin&quot;</span>)
+              <span class="operator">&lt;</span>major<span class="operator">-</span>version<span class="operator">&gt;</span>     <span class="operator">=</span> major version value (<span class="keyword">default</span>: <span class="number">0</span>)
+              <span class="operator">&lt;</span>minor<span class="operator">-</span>version<span class="operator">&gt;</span>     <span class="operator">=</span> minor version value (<span class="keyword">default</span>: <span class="number">0</span>)
+Examples:
+  To generate a bootable a sama7d65 bootstrap image named boot<span class="operator">.</span>bin (without specific version information) from a bootstrap<span class="operator">.</span>bin file:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u gen_image:sama7d65:bootstrap<span class="operator">.</span>bin<span class="operator">::</span>:
+
+  To generate a sama7d65 bootable bootstrap image with version <span class="number">4.33</span> named boot_image<span class="operator">.</span>bin from a bootstrap<span class="operator">.</span>bin file:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u gen_image:sama7d65:bootstrap<span class="operator">.</span>bin:boot_image<span class="operator">.</span>bin:<span class="number">4</span>:<span class="number">33</span></pre>
+<a name="parse-image-utility"></a>
+<h3 >&quot;parse_image&quot; utility</h3>
+<p>The &quot;<i>parse_image</i>&quot; parse a bootable bootstrap image and display header info.</p>
+<pre class="cpp">$ sam<span class="operator">-</span>ba <span class="operator">-</span>u parse_image:help
+
+Parse a bootable bootstrap image and display header info<span class="operator">.</span>
+Usage:
+  <span class="operator">-</span>u parse_image:<span class="operator">&lt;</span>input<span class="operator">-</span>filename<span class="operator">&gt;</span>
+       where: <span class="operator">&lt;</span>input<span class="operator">-</span>filename<span class="operator">&gt;</span>    <span class="operator">=</span> bootable bootstrap image filename
+Example:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u parse_image:bootstrap<span class="operator">.</span>bin</pre>
+<a name="gen-pmecc-cfg-utility"></a>
+<h3 >&quot;gen_pmecc_cfg&quot; utility</h3>
+<p>The &quot;<i>gen_pmecc_cfg</i>&quot; generate a PMECC configuration for NAND Flash memory.</p>
+<pre class="cpp">$ sam<span class="operator">-</span>ba <span class="operator">-</span>u gen_pmecc_cfg:help
+
+Generate a PMECC configuration <span class="keyword">for</span> NAND Flash memory<span class="operator">.</span>
+Usage:
+  <span class="operator">-</span>u gen_pmecc_cfg:<span class="operator">&lt;</span>nbSectorPerPage<span class="operator">&gt;</span>:<span class="operator">&lt;</span>spareSize<span class="operator">&gt;</span>:<span class="operator">&lt;</span>eccBitReq<span class="operator">&gt;</span>:<span class="operator">&lt;</span>sectorSize<span class="operator">&gt;</span>:<span class="operator">&lt;</span>eccOffset<span class="operator">&gt;</span>:<span class="operator">&lt;</span>usePmecc<span class="operator">&gt;</span>
+       where: <span class="operator">&lt;</span>nbSectorPerPage<span class="operator">&gt;</span>  <span class="operator">=</span> number of sectors per page: <span class="number">2</span><span class="operator">^</span>(nbSectorPerPage)
+              <span class="operator">&lt;</span>spareSize<span class="operator">&gt;</span>        <span class="operator">=</span> size of spare zone in bytes
+              <span class="operator">&lt;</span>eccBitReq<span class="operator">&gt;</span>        <span class="operator">=</span> number of ECC Bits Required:
+                                       <span class="number">0</span> <span class="keyword">if</span> <span class="number">2</span><span class="operator">-</span>bit ECC
+                                       <span class="number">1</span> <span class="keyword">if</span> <span class="number">4</span><span class="operator">-</span>bit ECC
+                                       <span class="number">2</span> <span class="keyword">if</span> <span class="number">8</span><span class="operator">-</span>bit ECC
+                                       <span class="number">3</span> <span class="keyword">if</span> <span class="number">12</span><span class="operator">-</span>bit ECC
+                                       <span class="number">4</span> <span class="keyword">if</span> <span class="number">24</span><span class="operator">-</span>bit ECC
+                                       <span class="number">5</span> <span class="keyword">if</span> <span class="number">32</span><span class="operator">-</span>bit ECC
+              <span class="operator">&lt;</span>sectorSize<span class="operator">&gt;</span>       <span class="operator">=</span> number of bytes per sector: <span class="number">512</span> <span class="keyword">or</span> <span class="number">1024</span>
+              <span class="operator">&lt;</span>eccOffset<span class="operator">&gt;</span>        <span class="operator">=</span> offset of the first ecc byte in spare zone ( min value <span class="operator">=</span> <span class="number">2</span>)
+              <span class="operator">&lt;</span>usePmecc<span class="operator">&gt;</span>         <span class="operator">=</span> <span class="number">1</span> <span class="keyword">if</span> PMECC is used<span class="operator">,</span> <span class="number">0</span> <span class="keyword">else</span>
+Example:
+  To generate a PMECC configuration <span class="keyword">for</span> <span class="number">8</span> sector per page<span class="operator">,</span> <span class="number">256</span> bytes of spare<span class="operator">,</span> <span class="number">8</span><span class="operator">-</span>bit ECC<span class="operator">,</span> <span class="number">1024</span> bytes sector size<span class="operator">,</span> ecc offset <span class="operator">=</span> <span class="number">3</span>:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u gen_pmecc_cfg:<span class="number">3</span>:<span class="number">256</span>:<span class="number">2</span>:<span class="number">1024</span>:<span class="number">3</span>:<span class="number">1</span></pre>
+<a name="parse-pmecc-cfg-utility"></a>
+<h3 >&quot;parse_pmecc_cfg&quot; utility</h3>
+<p>The &quot;<i>parse_pmecc_cfg</i>&quot; utility parse and describe a PMECC configuration for NAND Flash memory.</p>
+<pre class="cpp">$ sam<span class="operator">-</span>ba <span class="operator">-</span>u parse_pmecc_cfg:help
+
+Parse and describe  a PMECC configuration <span class="keyword">for</span> NAND Flash memory<span class="operator">.</span>
+Usage:
+  <span class="operator">-</span>u parse_pmecc_cfg:<span class="operator">&lt;</span>PMECC_CFG<span class="operator">&gt;</span>
+       where: <span class="operator">&lt;</span>PMECC_CFG<span class="operator">&gt;</span>  <span class="operator">=</span> PMECC Configuration value in hexadecimal
+Example:
+  To parse the PMECC configuration <span class="number">0xC00db004</span>:
+      <span class="operator">.</span><span class="operator">/</span>sam<span class="operator">-</span>ba <span class="operator">-</span>u parse_pmecc_cfg:<span class="number">0xC00db004</span></pre>
+</div>
+<!-- @@@utilities.html -->
+<p /><address><hr /><div align="center">
+<table width="100%" cellspacing="0" border="0"><tr class="address">
+<td width="60%" align="left">Copyright &copy; 2024 Microchip Technology</td>
+<td width="40%" align="right"><div align="right">SAM-BA Documentation</div></td>
+</tr></table></div></address></body>
+</html>

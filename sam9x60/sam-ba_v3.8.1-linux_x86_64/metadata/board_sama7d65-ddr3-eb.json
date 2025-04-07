@@ -1,0 +1,6 @@
+{
+	"module": "SAMBA.Device.SAMA7D65",
+    "module_version": "3.8",
+	"classname": "SAMA7D65DDR3EB",
+	"type": "board"
+}

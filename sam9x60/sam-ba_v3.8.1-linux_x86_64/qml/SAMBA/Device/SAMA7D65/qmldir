@@ -1,0 +1,13 @@
+module SAMBA.Device.SAMA7D65
+BCP 3.8 sama7d65-bcp.js
+BSCR 3.8 sama7d65-bscr.js
+SAMA7D65 3.8 SAMA7D65.qml
+SAMA7D65BootConfigApplet 3.8 SAMA7D65BootConfigApplet.qml
+SAMA7D65Config 3.8 SAMA7D65Config.qml
+SAMA7D65DDR3EB 3.8 SAMA7D65DDR3EB.qml
+SAMA7D65SIPEB 3.8 SAMA7D65SIPEB.qml
+SAMA7D65CURIOSITY 3.8 SAMA7D65CURIOSITY.qml
+SAMA7D65PairingModeApplet 3.8 SAMA7D65PairingModeApplet.qml
+SBCP 3.8 sama7d65-sbcp.js
+UHCP 3.8 sama7d65-uhcp.js
+VERS 3.8 sama7d65-vers.js

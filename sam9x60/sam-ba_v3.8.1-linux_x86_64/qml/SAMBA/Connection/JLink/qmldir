@@ -1,0 +1,5 @@
+module SAMBA.Connection.JLink
+depends SAMBA 3.8
+plugin samba_conn_jlink
+classname SambaConnectionJLinkPlugin
+JLinkConnection 3.8 JLinkConnection.qml
